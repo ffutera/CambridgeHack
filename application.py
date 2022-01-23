@@ -60,11 +60,13 @@ def secondPage():
         return redirect(url_for('index'))
     return render_template("secondPage.html", username=str(session['username']))
 
-@app.route("/info/score", methods=["POST"])
+@app.route("/info/score", methods=["POST","GET"])
 def score():
     global regressors
     if (session['username'] is None):
         return redirect(url_for('index'))
+    if request.method == 'GET':
+        return redirect(url_for('secondPage'))
     name = request.form.get("company_name").upper()
     country = request.form.get("country").title()
     env_cost = request.form.get("env_cost")
