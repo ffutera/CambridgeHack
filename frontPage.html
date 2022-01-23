@@ -1,0 +1,154 @@
+<head>
+	<title>Login</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href= "{{ url_for('static',filename='Bootstrap/bootstrap.css') }}">
+  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/main.css') }}">
+	<link rel="stylesheet" type="text/css"  media="screen and (max-device-width: 320px)"  href= "{{ url_for('static',filename='styles/fitScreen.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@700&family=Source+Sans+Pro:wght@300;900&display=swap" rel="stylesheet">   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<html> 
+   <body id="back">
+    <nav class="navbar navbar-inverse" id= "color">
+        <div class="container-fluid">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#" id="name">EcoVest</a>
+          </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" id="loginPage" style="position:relative;float:right">
+        <ul class="nav navbar-nav">
+            <a class="button" href="#modal1" id="register">Register</a>
+            <div class="popup" id="modal1">
+                <a class="popup__overlay" href="#"></a>
+                <div class="popup__wrapper">
+                    <a class="popup__close" href="#">X</a>
+                   <!-- <p id="error" >{{ message }}<p>-->
+                        <h4 id="title">Register</h4>
+                        <div id = "form">
+                        <form action="{{ url_for('verify') }}" method="post">
+                          <input minlength=3 type="text" id="username" name="username" placeholder="Username" required="required"><br><br>
+                          <input minlength=3 type="password" id="password" name="password" placeholder="Password" required="required"><br><br>
+                          <input id="submit" type="submit" value="Register" id = "name"><br>
+                        </form>
+                        </div>
+                </div>
+            </div>
+            <a class="button" href="#modal2" id="register">Login</a>
+            <div class="popup" id="modal2">
+                <a class="popup__overlay" href="#"></a>
+                <div class="popup__wrapper">
+                    <a class="popup__close" href="#">X</a>
+                   <!-- <p id="error">{{ message }}<p>-->
+                     <h4 id="title">Login</h4>
+                        <div id = "form">
+                        <form action="{{ url_for('main') }}" method="post">
+                          <input minlength=3 type="text" id="username" name="username" placeholder="Username" required><br><br>
+                          <input minlength=3 type="password" id="password" name="password" placeholder="Password" required><br><br>
+                          <input id="submit" type="submit" value="Login"><br>
+                        </form>
+                        </div>
+                </div>
+            </div>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+        <ul class="nav navbar-nav">
+            <img id="logo" src="{{url_for('static', filename='logo.jpeg')}}">
+        </ul>
+    </div>
+  </nav>   
+   <section id="powerpoint">
+    <div class="slideshow-container">
+        <div class="mySlides fade">
+          <div class="numbertext">1 / 3</div>
+          <img src="{{url_for('static', filename='article1.jpeg')}}" style="width:100%">
+          <div class="text"><a href="https://www.barrons.com/articles/top-sustainable-investment-funds-ranking-51642723579" id='captions'>Barron’s Top-Performing Sustainable Funds</a></div>
+        </div>
+        <div class="mySlides fade">
+          <div class="numbertext">2 / 3</div>
+          <img src="{{url_for('static', filename='article2.jpeg')}}" style="width:100%">
+          <div class="text"><a href="https://blogs.worldbank.org/psd/elephant-room-bringing-sustainable-investment-africa" id='captions'>Bringing Sustainable Inevstments to Africa</a></div>
+        </div>
+        <div class="mySlides fade">
+          <div class="numbertext">3 / 3</div>
+          <img src="{{url_for('static', filename='article3.jpeg')}}" style="width:100%">
+          <div class="text"><a href="https://www.weforum.org/our-impact/sustainable-investment/" id='captions'>How to Advance Sustainable Foreign Direct Investment</a></div>
+        </div>
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      </div>
+      <br>
+      <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+      </div>
+      <script>
+        var slideIndex = 0;
+        showSlides();
+        function showSlides() {
+          var i;
+          var slides = document.getElementsByClassName("mySlides");
+          for(i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+          }
+          slideIndex++;
+          if(slideIndex > slides.length) {
+            slideIndex = 1
+          }
+          slides[slideIndex - 1].style.display = "block";
+          setTimeout(showSlides, 3000); // Change image every 2 seconds
+        }
+        window.setTimeout(function() {
+          var registerFault = {{ registerFault }};
+          var loginFault = {{ loginFault }};
+          var registerSuccess = {{ registerSuccess }};
+          if (registerFault) {
+            alert("Username taken! Try again");
+          }
+          else if (loginFault) {
+            alert("Invalid creditentials! Try again");
+          } 
+          else if (registerSuccess) {
+            alert("Registration successful, please login");
+          }
+        }, 500);
+      </script>
+   </section>
+   <section id="present1">
+    <h2 id="header"> Most Sustainable Companies</h2> 
+    <ol>
+      {% for item in ranking %}
+      <li id="page2"><h3>{{item[0]}},{{item[1]}}</h3><br></li>
+      {% endfor %}
+    </ol>
+    </section>
+    <section id="present2">
+      <h2 id="header">How the Model Works</h2> 
+      <ul>
+        <li id="page2"> <h3>Created from Corporate Environmental Impact Analysis</h3><br></li>
+        <li id="page2"> <h3>Factors included: Working Capacity, Biodiversity, Abiotic Resources, Wood Production Capacity, Water Production Capacity</h3><br></li>
+        <li id="page2"> <h3>Analyzed 13,000+ company reports</h3><br></li>
+        <li id="page2"> <h3>Filtered individual factors to rank companies into 5 tiers</h3><br></li>
+      </ul>
+    </div>
+    <footer></footer>
+   </body>
+</html>
