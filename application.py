@@ -87,9 +87,5 @@ def score():
     good_points = [] if good_points is None else good_points
     bad_points = bad_parameters(investment)
     bad_points = [] if bad_points is None else bad_points
-    print("tier ", tier)
-    print("suggestions ", suggestions)
-    print("good parameters ", good_points)
-    print("bad parameters ", bad_points)
     return render_template("score.html", username=str(session['username']), tier=tier, suggestions=suggestions
                             ,good_points=good_points, bad_points=bad_points, name=name)
